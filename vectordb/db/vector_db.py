@@ -31,7 +31,6 @@ class Item:
         return f"{{id: {self.id}, score: {self.score}, vector: {self.vector}, payload: {self.payload}}}"
 
 
-SearchResult = List[Item]
 
 
 class VectorDB(ABC):
@@ -66,7 +65,7 @@ class VectorDB(ABC):
         collection_name: str,
         query: Union[np.ndarray, list[np.ndarray]],
         top_k: int = 5,
-    ) -> List[SearchResult]:
+    ) -> List[List[Item]]:
         """Search for the top K similar vectors to the query vector."""
         ...
 

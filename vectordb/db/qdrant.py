@@ -16,7 +16,6 @@ from qdrant_client.http.models import (
 from .vector_db import (
     Distance,
     Item,
-    SearchResult,
     VectorDB,
 )
 
@@ -99,7 +98,7 @@ class Qdrant(VectorDB):
         query: Union[np.ndarray, List[np.ndarray]],
         top_k: int = 5,
         filter: dict = None,
-    ) -> List[SearchResult]:
+    ) -> List[List[Item]]:
         if not self._client.collection_exists(collection_name):
             logging.warning(f"'{collection_name}' was not created.")
             return None
