@@ -23,6 +23,8 @@ from .vector_db import (
 class Qdrant(VectorDB):
     def __init__(self, host: str = "localhost", port: int = 6333):
         self._client = QdrantClient(host=host, port=port)
+        #TODO ver uma melhor forma de verificar se o server esta ativo
+        self._client.get_collections() # so pra que de pau caso o docker o serviço nao este levntado
 
     def try_create_collection(
         self,
